@@ -1,0 +1,19 @@
+#rights .flashes {
+    top: auto !important;
+    left: auto !important;
+}
+a {
+    text-decoration: none !important;
+}
+.padding-top {
+    padding-top: 1em;
+}
+.padding-bottom {
+    padding-bottom: 1em;
+}
+.padding-left{
+    padding-left: 1em;
+}
+.padding-right {
+    padding-right: 1em;
+}

@@ -1,0 +1,88 @@
+.coupon-content {
+    margin: 15px 0;
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #8c8c8c;
+}
+
+.coupon-content p {
+    margin: 2px;
+}
+
+.say-thank {
+    padding: 15px 15px 0;
+    text-align: center;
+}
+
+.qr-code {
+    text-align: center;
+}
+
+.qr-code img {
+    max-width: 300px;
+}
+
+.promote-code {
+    margin-bottom: 15px;
+    text-align: center;
+    color: red;
+    font-size: 22px;
+}
+
+.policies {
+
+}
+
+.policies .policies-title{
+    font-weight: bold;
+}
+
+.coupon-content .error {
+    color: red;
+}
+
+.coupon-content.error {
+    border-color: red;
+}
+
+
+.coupon-verification {
+    padding: 10px 10px;
+}
+
+.coupon-verification .coupon-error{
+    color: red;
+}
+
+.coupon-verification .view-title {
+    color: green;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.coupon-verification .coupon-info {
+    border: 1px solid #264409;
+    overflow: auto;
+    padding: 10px 0px;
+    margin: 0px;
+}
+
+.coupon-info .row-info {
+    padding: 7px 0px;
+    overflow: auto;
+}
+
+.coupon-info .left-col {
+    font-weight: bold;
+    color: black;
+}
+
+.coupon-info .right-col div{
+    padding: 3px 0px;
+}
+
+.coupon-info .right-col div.blue{
+    color: #298dcd;
+}
+
+

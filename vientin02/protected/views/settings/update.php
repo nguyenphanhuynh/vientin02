@@ -15,6 +15,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Settings <?php echo $model->id; ?></h1>
+<h1>Update Settings <?php echo $model->setting_key; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

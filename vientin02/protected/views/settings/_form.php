@@ -47,7 +47,7 @@
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'setting_key'); ?>
-		<?php echo $form->textField($model,'setting_key',array('size'=>60,'maxlength'=>256)); ?>
+		<?php echo $form->textField($model,'setting_key',array('size'=>60,'maxlength'=>256, 'readonly' => true)); ?>
 		<?php echo $form->error($model,'setting_key'); ?>
 	</div>
 

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.22, for osx10.8 (x86_64)
 --
--- Host: 127.0.0.1    Database: vientin_campaign_marketing
+-- Host: 127.0.0.1    Database: vientin02
 -- ------------------------------------------------------
 -- Server version	5.5.42-log
 
@@ -38,7 +38,7 @@ CREATE TABLE `authassignment` (
 
 LOCK TABLES `authassignment` WRITE;
 /*!40000 ALTER TABLE `authassignment` DISABLE KEYS */;
-INSERT INTO `authassignment` VALUES ('Admin','1',NULL,'N;');
+INSERT INTO `authassignment` VALUES ('Admin','1',NULL,'N;'),('Authenticated','1',NULL,'N;'),('Authenticated','2',NULL,'N;'),('Promote.View','2',NULL,'N;');
 /*!40000 ALTER TABLE `authassignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `authitem` (
 
 LOCK TABLES `authitem` WRITE;
 /*!40000 ALTER TABLE `authitem` DISABLE KEYS */;
-INSERT INTO `authitem` VALUES ('Admin',2,NULL,NULL,'N;'),('Authenticated',2,NULL,NULL,'N;'),('Guest',2,NULL,NULL,'N;');
+INSERT INTO `authitem` VALUES ('Admin',2,NULL,NULL,'N;'),('Authenticated',2,NULL,NULL,'N;'),('Guest',2,NULL,NULL,'N;'),('Promote.*',1,NULL,NULL,'N;'),('Promote.Admin',0,NULL,NULL,'N;'),('Promote.Create',0,NULL,NULL,'N;'),('Promote.Delete',0,NULL,NULL,'N;'),('Promote.Index',0,NULL,NULL,'N;'),('Promote.Update',0,NULL,NULL,'N;'),('Promote.View',0,NULL,NULL,'N;'),('Site.*',1,NULL,NULL,'N;'),('Site.Error',0,NULL,NULL,'N;'),('Site.Index',0,NULL,NULL,'N;'),('Site.Login',0,NULL,NULL,'N;'),('Site.Logout',0,NULL,NULL,'N;');
 /*!40000 ALTER TABLE `authitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,32 +92,8 @@ CREATE TABLE `authitemchild` (
 
 LOCK TABLES `authitemchild` WRITE;
 /*!40000 ALTER TABLE `authitemchild` DISABLE KEYS */;
+INSERT INTO `authitemchild` VALUES ('Authenticated','Promote.Create'),('Guest','Promote.Create'),('Authenticated','Promote.View'),('Guest','Promote.View'),('Authenticated','Site.*'),('Authenticated','Site.Error'),('Authenticated','Site.Index'),('Authenticated','Site.Login'),('Guest','Site.Login'),('Authenticated','Site.Logout');
 /*!40000 ALTER TABLE `authitemchild` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `rights`
---
-
-DROP TABLE IF EXISTS `rights`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `rights` (
-  `itemname` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `type` int(11) NOT NULL,
-  `weight` int(11) NOT NULL,
-  PRIMARY KEY (`itemname`),
-  CONSTRAINT `rights_ibfk_1` FOREIGN KEY (`itemname`) REFERENCES `AuthItem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rights`
---
-
-LOCK TABLES `rights` WRITE;
-/*!40000 ALTER TABLE `rights` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rights` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -203,8 +179,9 @@ CREATE TABLE `promote_codes` (
   `created_at` datetime NOT NULL,
   `status` tinyint(1) DEFAULT '0',
   `updated_at` datetime DEFAULT NULL,
+  `used_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +190,7 @@ CREATE TABLE `promote_codes` (
 
 LOCK TABLES `promote_codes` WRITE;
 /*!40000 ALTER TABLE `promote_codes` DISABLE KEYS */;
-INSERT INTO `promote_codes` VALUES (1,'8dffd7bc','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:17:30',0,'2016-05-26 19:17:30'),(2,'8693f0e7','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:19:11',0,'2016-05-26 19:19:11'),(3,'83d65f12','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:19:21',0,'2016-05-26 19:19:21'),(4,'9e611474','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:21:35',0,'2016-05-26 19:21:35'),(5,'ab3a9d4f','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:31:31',0,'2016-05-26 19:31:31'),(6,'5b488ea7','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:32:51',0,'2016-05-26 19:32:51'),(7,'4658f792','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:33:32',0,'2016-05-26 19:33:32'),(8,'5ec1a8','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:49:48',0,'2016-05-26 19:49:48'),(9,'d9e197cd','20%','\"\"','\"{}\"','\"\"','\"\"','2016-06-08 07:53:38',0,'2016-06-08 07:53:38'),(10,'1a514732','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-08 19:39:11',0,'2016-06-08 19:39:11'),(11,'9f3a4539','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-08 19:41:00',0,'2016-06-08 19:41:00'),(12,'d39a8c','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-08 19:41:53',0,'2016-06-08 19:41:53'),(13,'e77cd260','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-08 19:53:55',0,'2016-06-08 19:53:55'),(14,'f5ff38b4','20%','\"\"',NULL,'\"\"','\"\"','2016-06-25 17:44:05',0,'2016-06-25 17:44:05');
+INSERT INTO `promote_codes` VALUES (1,'8dffd7bc','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:17:30',0,'2016-06-25 23:04:46','2016-06-25 23:04:46'),(2,'8693f0e7','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:19:11',0,'2016-06-25 23:04:35','2016-06-25 23:04:35'),(3,'83d65f12','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:19:21',0,'2016-06-25 23:05:01','2016-06-25 23:05:01'),(4,'9e611474','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:21:35',0,'2016-06-25 23:05:11','2016-06-25 23:05:11'),(5,'ab3a9d4f','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:31:31',0,'2016-05-26 19:31:31',NULL),(6,'5b488ea7','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:32:51',0,'2016-05-26 19:32:51',NULL),(7,'4658f792','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:33:32',0,'2016-05-26 19:33:32',NULL),(8,'5ec1a8','20%','{\"id\":367}','{\"name\":\"John\", \"surname\":\"Doe\", \"gender\":\"Male\", \"username\":\"john_user\", \"email\":\"example@example.com\"}','','','2016-05-26 19:49:48',0,'2016-05-26 19:49:48',NULL),(9,'d9e197cd','20%','\"\"','\"{}\"','\"\"','\"\"','2016-06-08 07:53:38',0,'2016-06-08 07:53:38',NULL),(10,'1a514732','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-08 19:39:11',0,'2016-06-08 19:39:11',NULL),(11,'9f3a4539','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-08 19:41:00',0,'2016-06-25 23:03:39','2016-06-25 23:03:39'),(12,'d39a8c','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-08 19:41:53',0,'2016-06-08 19:41:53',NULL),(13,'e77cd260','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-08 19:53:55',0,'2016-06-08 19:53:55',NULL),(14,'f5ff38b4','20%','\"\"',NULL,'\"\"','\"\"','2016-06-25 17:44:05',0,'2016-06-25 17:44:05',NULL),(15,'cc798acb','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:02:42',0,'2016-06-25 21:02:42',NULL),(16,'96db5d84','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:02:46',0,'2016-06-25 21:02:46',NULL),(17,'edd8c897','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:03:05',0,'2016-06-25 21:03:05',NULL),(18,'1cb0e411','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:10:17',0,'2016-06-25 21:10:17',NULL),(19,'4573806e','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:11:55',0,'2016-06-25 21:11:55',NULL),(20,'94097c48','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:13:49',0,'2016-06-25 21:13:49',NULL),(21,'5768845c','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:14:40',0,'2016-06-25 21:14:40',NULL),(22,'726c094f','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:16:57',0,'2016-06-25 21:16:57',NULL),(23,'75c54b46','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:19:28',0,'2016-06-25 21:19:28',NULL),(24,'642e5414','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:19:28',0,'2016-06-25 21:19:28',NULL),(25,'30f57b1c','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:19:35',0,'2016-06-25 21:19:35',NULL),(26,'97be772b','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:19:40',0,'2016-06-25 21:19:40',NULL),(27,'454add56','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:21:37',0,'2016-06-25 21:21:37',NULL),(28,'3120329d','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:22:14',0,'2016-06-25 21:22:14',NULL),(29,'ec471681','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:22:16',0,'2016-06-25 21:22:16',NULL),(30,'fe3290a9','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:23:20',0,'2016-06-25 21:23:20',NULL),(31,'2e198737','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:23:21',0,'2016-06-25 21:23:21',NULL),(32,'873b9638','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:23:53',0,'2016-06-25 21:23:53',NULL),(33,'9fab91f5','20%',NULL,NULL,NULL,NULL,'2016-06-25 21:23:56',0,'2016-06-25 21:23:56',NULL),(34,'4358c162','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 21:25:03',0,'2016-06-25 21:25:03',NULL),(35,'e353dadb','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 22:30:19',0,'2016-06-25 22:30:19',NULL),(36,'82926e28','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 22:30:51',0,'2016-06-25 23:05:17','2016-06-25 23:05:17'),(37,'97bde718','20%','\"\"',NULL,'\"\"','\"\"','2016-06-25 22:31:14',0,'2016-06-25 22:31:14',NULL),(38,'63554947','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 22:31:28',0,'2016-06-25 22:51:01','2016-06-25 22:51:01'),(39,'fc5a2a78','20%','\"{\\\"id\\\":367}\"','\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\"','\"\"','\"\"','2016-06-25 22:52:06',0,'2016-06-25 22:56:35','2016-06-25 22:56:35');
 /*!40000 ALTER TABLE `promote_codes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +206,7 @@ CREATE TABLE `requests` (
   `content` varchar(1024) COLLATE utf8_unicode_ci DEFAULT NULL,
   `posted_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,8 +215,58 @@ CREATE TABLE `requests` (
 
 LOCK TABLES `requests` WRITE;
 /*!40000 ALTER TABLE `requests` DISABLE KEYS */;
-INSERT INTO `requests` VALUES (8,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-08 19:06:41'),(9,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-08 19:06:53'),(10,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:42'),(11,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:43'),(12,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:43'),(13,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:43'),(14,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:44');
+INSERT INTO `requests` VALUES (8,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-08 19:06:41'),(9,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-08 19:06:53'),(10,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:42'),(11,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:43'),(12,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:43'),(13,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:43'),(14,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 17:06:44'),(15,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:02'),(16,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:03'),(17,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:10'),(18,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:11'),(19,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:13'),(20,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:14'),(21,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:16'),(22,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:21'),(23,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 21:06:25'),(24,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 22:06:30'),(25,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 22:06:30'),(26,'{\"User\":\"\",\"Tenant\":\"\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 22:06:31'),(27,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 22:06:31'),(28,'{\"User\":\"{\\\"name\\\":\\\"John\\\", \\\"surname\\\":\\\"Doe\\\", \\\"gender\\\":\\\"Male\\\", \\\"username\\\":\\\"john_user\\\", \\\"email\\\":\\\"example@example.com\\\"}\",\"Tenant\":\"{\\\"id\\\":367}\",\"WifiArea\":\"\",\"Parameters\":\"\"}','2016-06-25 22:06:52');
 /*!40000 ALTER TABLE `requests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rights`
+--
+
+DROP TABLE IF EXISTS `rights`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rights` (
+  `itemname` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `type` int(11) NOT NULL,
+  `weight` int(11) NOT NULL,
+  PRIMARY KEY (`itemname`),
+  CONSTRAINT `rights_ibfk_1` FOREIGN KEY (`itemname`) REFERENCES `AuthItem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rights`
+--
+
+LOCK TABLES `rights` WRITE;
+/*!40000 ALTER TABLE `rights` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rights` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `settings`
+--
+
+DROP TABLE IF EXISTS `settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `setting_key` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `setting_value` varchar(8000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `settings`
+--
+
+LOCK TABLES `settings` WRITE;
+/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
+INSERT INTO `settings` VALUES (1,'promote_top_content','<p style=\"box-sizing: border-box; margin: 2px; color: #333333; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 14px; text-align: center;\">C&aacute;m ơn Bạn!</p>\r\n<p style=\"box-sizing: border-box; margin: 2px; color: #333333; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 14px; text-align: center;\">Bạn đ&atilde; đăng nhập th&agrave;nh c&ocirc;ng.</p>\r\n<p style=\"box-sizing: border-box; margin: 2px; color: #333333; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 14px; text-align: center;\">Sử dụng Coupon dưới đ&acirc;y để được giảm gi&aacute; 20% thức ăn tại Bonjour Resto</p>'),(2,'promote_bottom_content','<p><span style=\"color: #333333; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: bold;\">Quy định:</span></p>\r\n<p style=\"box-sizing: border-box; margin: 2px; color: #333333; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 14px;\">- Đọc m&atilde; v&agrave; số điện thoại/email của bạn tại quầy thu ng&acirc;n để đối chứng nhận giảm gi&aacute;</p>\r\n<p style=\"box-sizing: border-box; margin: 2px; color: #333333; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 14px;\">- Mỗi m&atilde; chỉ c&oacute; gi&aacute; trị sử dụng 1 lần duy nhất</p>\r\n<p style=\"box-sizing: border-box; margin: 2px; color: #333333; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 14px;\">- Khuyến m&atilde;i giảm gi&aacute; kh&ocirc;ng c&oacute; gi&aacute; trị quy đổi th&agrave;nh tiền mặt</p>');
+/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -287,4 +314,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-25 23:43:11
+-- Dump completed on 2016-06-27  0:27:54

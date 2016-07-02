@@ -74,7 +74,7 @@
 
 </div><!-- form -->
 <div class="panel panel-primary">
-	<div class="panel-heading">Demo POST Data</div>
+	<div class="panel-heading">Expected POST Data</div>
 	<div class="panel-body">
 		<pre>{
 	"v2": {

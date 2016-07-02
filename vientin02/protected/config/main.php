@@ -80,6 +80,9 @@ return array(
 	'defaultController'=>'promote/view',
 	// application components
 	'components'=>array(
+		'format' => array(
+			'class' => 'application.extensions.CustomFormatter',
+		),
 		'user'=>array(
 			'class'=>'RWebUser',
 			// enable cookie-based authentication
@@ -103,13 +106,13 @@ return array(
 
 		'db'=>array(
 			// Local
-//			'connectionString' => 'mysql:host=localhost;dbname=vientin02',
-//			'username' => 'root',
-//			'password' => 'root',
+			'connectionString' => 'mysql:host=localhost;dbname=vientin02',
+			'username' => 'root',
+			'password' => 'root',
 			// VienTin Server
-			'connectionString' => 'mysql:host=localhost;dbname=dbapp',
-			'username' => 'vanminh',
-			'password' => '123456',
+//			'connectionString' => 'mysql:host=localhost;dbname=dbapp',
+//			'username' => 'vanminh',
+//			'password' => '123456',
 			'charset' => 'utf8',
 			'emulatePrepare' => true,
 //			'tablePrefix' => 'tbl_',

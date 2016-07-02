@@ -94,7 +94,7 @@ class RequestsController extends BaseController
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Requests']))
 			$model->attributes=$_GET['Requests'];
-
+		$model->dbCriteria->order='posted_date DESC';
 		$this->render('admin',array(
 			'model'=>$model,
 		));

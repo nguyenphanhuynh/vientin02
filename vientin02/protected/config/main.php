@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Viễn Tin',
-
+	'timeZone' => 'Asia/Ho_Chi_Minh',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -93,6 +93,7 @@ return array(
 			'itemChildTable'=>'authitemchild',
 			'assignmentTable'=>'authassignment',
 			'rightsTable'=>'rights',
+			'defaultRoles'=>array('Guest'),
 		),
 //		'db'=>array(
 //			'connectionString' => 'sqlite:protected/data/blog.db',
@@ -101,11 +102,16 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=vientin02',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'root',
+			// Local
+//			'connectionString' => 'mysql:host=localhost;dbname=vientin02',
+//			'username' => 'root',
+//			'password' => 'root',
+			// VienTin Server
+			'connectionString' => 'mysql:host=localhost;dbname=dbapp',
+			'username' => 'vanminh',
+			'password' => '123456',
 			'charset' => 'utf8',
+			'emulatePrepare' => true,
 //			'tablePrefix' => 'tbl_',
 		),
 
@@ -115,12 +121,13 @@ return array(
 		),
 		'urlManager'=>array(
 			'urlFormat'=>'path',
-			'showScriptName'=>false,
+			'showScriptName'=>true,
 			'caseSensitive'=>false,
 			'rules'=>array(
 				'post/<id:\d+>/<title:.*?>'=>'post/view',
 				'posts/<tag:.*?>'=>'post/index',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				'coupon_sdk'=>'promote/create',
 			),
 		),
 		'log'=>array(

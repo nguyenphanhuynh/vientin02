@@ -57,7 +57,7 @@ $this->menu=array(
 				'custom_view' => array(
 					'url'=>'Yii::app()->controller->createUrl("/promote/view",array("code"=>$data->code))',
 					'htmlOptions' => array('class', 'view'),
-					'imageUrl'=>'../img/view.png',
+					'imageUrl'=>Yii::app()->baseUrl . '/img/view.png',
 				),
 			),
 			'template'=>'{custom_view}{delete}',

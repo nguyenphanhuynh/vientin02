@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <script>
+        var nowStart = new Date().getTime();
+    </script>	       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cloud4Wi - Splash Portal</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- CSS-->
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+
+    <!-- CSS LHS
+    <link href='/fwebapps/splashPortal/splashportal.css' rel='stylesheet' type='text/css'>-->
+
+
+    <!--[if IE 6]>
+    <link href="/css/modernizr/ie7.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 7]>
+    <link href="/css/modernizr/ie7.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 8]>
+    <link href="/css/modernizr/ie8.css" rel="stylesheet" type="text/css" />
+    <link href="/css/modernizr/ie7.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 9]>
+    <link href="/css/modernizr/ie9.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/cloud4wi.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-social.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/system/system.css" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+
+    <!-- Javascript-->
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        if (!document.createElement("canvas").getContext) {
+            document.write('<div class="bodygrey">'+
+                    '<div class="warning-ie">'+
+                    '<div class="warning-msg">'+
+                    '<div class="warning-text"></b></div>'+
+                    '<div class="warning-text2"></b></div>'+
+                    '<div class="list-browser">'+
+                    '<div class="browser"><a target="_blank" href="http://www.google.com/chrome"><img src="/img/chrome.png" alt="Chrome" /><br />Chrome</a></div>'+
+                    '<div class="browser"><a href="http://search.info.apple.com/index.html?lr=lang_it&q=safari&search=Go&type=kbdload&locale=it_IT" target="_blank"><img src="/img/safari.png" alt="Safari" /><br />Safari</a></div>'+
+                    '<div class="browser"><a target="_blank" href="http://www.getfirefox.it/firefox/"><img src="/img/firefox.png" alt="Firefox" /><br />Firefox</a></div>'+
+                    '<div class="browser"><a target="_blank" href="http://windows.microsoft.com/it-it/internet-explorer/download-ie"><img src="/img/ie.png" alt="Internet Explorer" /><br />Internet Explorer</a></div>'+
+                    '</div>'+
+                    '<div onclick="$(\'.bodygrey\').slideUp();" class="continua-btn"></div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>');
+        }
+
+    </script>
+
+
+
+
+
+
+
+    <style type="text/css">
+        .js, .js body {overflow:hidden}
+        .js body > * {visibility:hidden}
+        .js #loading_layer {visibility:visible;display:block !important;position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;z-index:10000}
+        .js #loading_layer img {position:fixed;top:50%;left:50%;width:50px;height:50px;margin:-5px 0 0 -32px}
+        .js .tab-pane {display:block !important}
+        .js .hide {display: inherit}
+    </style>
+
+
+
+    <script>
+        document.getElementsByTagName('html')[0].className = 'js';
+    </script>
+
+
+
+    <script>
+        setTimeout('$("html").removeClass("js")',8000);
+    </script>
+
+</head>
+
+
+<body id="internal" class="not_logged">
+<div class='modal  fade' id='alertIOS7' style="display:none;">
+    <div class='modal-body'>
+        <div>
+            <div class="modalAlert" style="float:left;"></div>
+            <div>
+                <h4 style="color:#000000;width:100%;text-align:center;"></h4>
+            </div>
+        </div>
+        <br />
+        <div id="showMoreIOS7" style="display:none;">
+            <h3 style="color:#ffffff;"></h3>
+            <ol>
+                <li><br /><br />
+                    <img id="ios7_1" src="" /><br /><br />
+                </li>
+                <li> <img id="ios7_2" src="" /><br /><br /></li>
+                <li><br /><br />
+                    <img id="ios7_3" src="" /><br /><br />
+                </li>
+                <li> <img id="ios7_4" width="15px" src="" />&nbsp;<br /><br />
+                    <img id="ios7_5" src="" /><br /><br />
+
+                </li>
+                <li><br /><br />
+                    <img id="ios7_6" src="" /><br /><br />
+                </li>
+                <li><br /><br /></li>
+                <li><br /><br /></li>
+            </ol>
+        </div>
+        <p style="text-align:center;">
+            <button id="buttonShowMoreIOS7"style="border:0px solid;background-color:#00B0F0;color:#ffffff;width:200px;height:40px;" onClick="showMoreIOS7();"></button>
+        </p>
+    </div>
+</div>
+<script type="text/javascript">
+    function showMoreIOS7(){
+        $("#ios7_1").attr("src","/img/ios7/home.jpg");
+        $("#ios7_2").attr("src","/img/ios7/settings.jpg");
+        $("#ios7_3").attr("src","/img/ios7/viewer1.jpg");
+        $("#ios7_4").attr("src","/img/ios7/info.jpg");
+        $("#ios7_5").attr("src","/img/ios7/viewer1.1.jpg");
+        $("#ios7_6").attr("src","/img/ios7/viewer3.jpg");
+        $('#showMoreIOS7').show();
+        $('#buttonShowMoreIOS7').hide();
+    }
+
+    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) {
+        if (navigator.userAgent.match(/OS 7_\d/i)) {
+            if (!navigator.userAgent.match(/Safari/i)) {
+                $(document).ready(function() {
+                    $('#alertIOS7').modal('show');
+                });
+            }
+        }
+    }
+</script><script>
+    $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
+</script>
+
+
+
+<div id="wrapper_sp">
+    <div id="loading_layer" style="display:none"><img width="60px" height="60px" src="/img/ajax_loader.gif" alt="" />
+    </div>
+    <nav>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="moreIcon btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"  style="width:28px;height:28px;">
+                    </a>
+
+                    <div class="hidden-desktop">
+                        <a class="homeIcon btn btn-navbar al" href="/" style="width:30px;height:30px;"></a>
+                    </div>
+
+
+                    <div class="nav-collapse">
+
+                        <ul class="nav">
+
+                            <li class="visible-desktop home_menu"><a href="/"></a></li>
+                        </ul>
+
+                        <ul class="nav pull-right">
+                            <li id="menu1" class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-target="#">
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/signin/index"> <i class="icon-share"></i> </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header_container" style="">
+
+
+        <div class="row-fluid pagination-centered full advTop"></div><div class="row-fluid full pagination-centered advertisingTop"></div>
+
+
+        <div class="container header_box">
+
+        </div>
+        <div id="riempi" class="riempi">
+        </div>
+        <div class="modal hide fade" id="myModalLoggedIn" style="display: none;">
+            <div class="modal-body">
+                <h4></h4>
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <a data-dismiss="modal" class="btn" href="#"></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container " id="content">
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html lang="en" class="no-js">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <title>Cloud4Wi Default</title>
+            <script>
+                var nowStart = new Date().getTime();
+            </script><meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+            <link href="/css/bootstrap/bootstrap-responsive.min.css"
+                  rel="stylesheet">
+            <link href="/css/font-awesome/css/font-awesome.css" rel="stylesheet">
+            <link href="/webapps/css/style.css" rel="stylesheet">
+            <script type="text/javascript" src="/js/jquery.min.js"></script>
+            <script type="text/javascript" src="/js/cookie/jquery.cookie.js"></script>
+            <script type="text/javascript" src="/js/cookie/cookie.js"></script>
+            <script src="/js/bootstrap/bootstrap.min.js"></script>
+            <script src="/js/bootstrap/modal-responsive-fix.min.js"></script>
+            <script
+                    src="/remoteAppContainer/application/js/j4wi.js.php?application_uri=cloud4widefault&token=542f250e-402b-11e6-94ca-005056030228"></script>
+
+            <style type="text/css">
+                .topBar {
+                    background: -moz-linear-gradient(left, rgba(253,185,19, 0) 0%, rgba(253,185,19, 0) 100%); /* FF3.6+ */
+                    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(253,185,19, 1)), color-stop(100%, rgba(253,185,19, 0))); /* Chrome,Safari4+ */
+                    background: -webkit-linear-gradient(left, rgba(253,185,19, 1) 0%, rgba(253,185,19, 0) 100%); /* Chrome10+,Safari5.1+ */
+                    background: -o-linear-gradient(left, rgba(253,185,19, 1) 0%, rgba(253,185,19, 0) 100%); /* Opera 11.10+ */
+                    background: -ms-linear-gradient(left, rgba(253,185,19, 1) 0%, rgba(253,185,19, 0) 100%); /* IE10+ */
+                    background: linear-gradient(to right, rgba(253,185,19, 1) 0%, rgba(253,185,19, 0) 100%); /* W3C */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdb913', endColorstr='#00fdb913', GradientType=1 ); /* IE6-9 */
+                }
+                a .backbutton_a {
+                    width: 24px;
+                    height: 24px;
+                    margin: 7px;
+                    background: url(/webapps/img/backbutton_a.png) top left no-repeat
+                }
+
+                a:hover .backbutton_a {
+                    width: 24px;
+                    height: 24px;
+                    margin: 7px;
+                    background: url(/webapps/img/backbutton_b.png) top left no-repeat
+                }
+            </style>
+
+
+        </head>
+        <body id="internal" class="apps around_you">
+        <div class="splashWrap" style="background-color:#fdb913">
+            <div class="iconCentered">
+                <img width="128px" height="128px" src="/webapps/remoteAppContainer/sdk_image/542f250e-402b-11e6-94ca-005056030228/icon?77faf680783de32aab2e3b2f93d05379" />
+                <div class="clearfix"></div>
+                Cloud4Wi Default    <p></p>
+                <img src="/remoteAppContainer/application/img/loader.gif" />
+            </div>
+        </div>
+        <div id="applicationContainer" style="display: none">
+            <nav>
+                <div class="navbar navbar-fixed-top">
+                    <div class="navbar-inner">
+                        <div class="topBar">
+                            <a class="win-backbutton pull-right" href="/">
+                                <div class="backbutton_a"></div>
+                            </a>
+                            <h3>Cloud4Wi Default</h3>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div id="content" class="container header_container">
+                <div id="elementContainer"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var jctx = j4wi;
+            j4wi.params = '';
+            $(document).ready(function(e) {
+                j4wi.pages.Homepage(function(r){
+                    j4wi.replceContentPage(r);
+                });
+            });
+        </script>
+        </body>
+        </html>
+        <script src="/js/tracker/tracker.js"></script>
+        <script type="text/javascript">
+
+            function prefixedPerfSupport() {
+                if (!!window.msPerformance) {
+                    return "ms";
+                } else if (!!window.webkitPerformance) {
+                    return "webKit";
+                } else {
+                    return false;
+                }
+            };
+
+
+            var featureDetect = {};
+            var textFiller;
+            featureDetect.supported = (window.msPerformance || window.webkitPerformance || window.performance) ? true : false;
+            featureDetect.prefixed = prefixedPerfSupport();
+            featureDetect.unprefixed = (self.performance) ? true : false;
+
+            if (featureDetect.supported) {
+
+                window.onload = function(){
+                    setTimeout(function(){
+                        var t = performance.timing;
+                        page_load_time=t.loadEventEnd - t.responseEnd
+                        page_load_time= Number(page_load_time/1000).toFixed(1);
+                        splashPortalVisitorOnload('','m25htqpolhdg8bm04vscnp8h82',page_load_time,'','cloud4widefault','webapps','remoteAppContainer');
+                    }, 0);
+                }
+            }else
+            {
+                $(function() {
+                    var now = new Date().getTime();
+                    page_load_time = now - nowStart;
+                    page_load_time= Number(page_load_time/1000).toFixed(1);
+                    splashPortalVisitorOnload('','m25htqpolhdg8bm04vscnp8h82',page_load_time,'','cloud4widefault','webapps','remoteAppContainer');
+                });
+            }
+        </script>		</div>
+    <div id="push">
+    </div>
+</div>
+
+<!--FOOTER -->
+<footer id="footer">
+
+    <div class="row-fluid">
+
+
+
+
+        <div id="sub_footer">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <p style="float:left;">
+                            &copy; 2016 Cloud4Wi.
+                            .
+                        </p>
+                        <p style="float:right">
+                            <small>5.9.6</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--FINE FOOTER -->
+
+
+
+<script type="text/javascript">
+
+    $(window).load(function(){
+
+        var footerHeight = ((document.getElementById('footer').offsetHeight) + 'px');
+        document.getElementById('push').style.height = footerHeight;
+        document.getElementById('wrapper_sp').style. marginBottom = '-' + footerHeight;
+
+    });
+</script>
+
+<!----------------- Scripts-->
+
+
+<script>
+    $(window).load(function(){
+    });
+
+    $(function() {
+        $('.modal').modalResponsiveFix({ debug: false })
+        $('.modal').touchScroll();
+    })
+    $(document).ready(function() {
+        setTimeout('$("html").removeClass("js")',1000);
+    });
+
+    $.ajax({
+        url: '/home/advertising',
+        dataType: 'json',
+        success: function(e){
+            $(e).each(function(index, element) {
+                $("."+element.position).html(element.html);
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
+<script src="/js/standardLayoutTemplate.js"></script>
+<script src="/js/tracker/tracker.js"></script>
+<script type="text/javascript">
+
+    function prefixedPerfSupport() {
+        if (!!window.msPerformance) {
+            return "ms";
+        } else if (!!window.webkitPerformance) {
+            return "webKit";
+        } else {
+            return false;
+        }
+    };
+
+
+    var featureDetect = {};
+    var textFiller;
+    featureDetect.supported = (window.msPerformance || window.webkitPerformance || window.performance) ? true : false;
+    featureDetect.prefixed = prefixedPerfSupport();
+    featureDetect.unprefixed = (self.performance) ? true : false;
+
+    if (featureDetect.supported) {
+
+        window.onload = function(){
+            setTimeout(function(){
+                var t = performance.timing;
+                page_load_time=t.loadEventEnd - t.responseEnd
+                page_load_time= Number(page_load_time/1000).toFixed(1);
+                splashPortalVisitorOnload('','m25htqpolhdg8bm04vscnp8h82',page_load_time,'','cloud4widefault','webapps','remoteAppContainer');
+            }, 0);
+        }
+    }else
+    {
+        $(function() {
+            var now = new Date().getTime();
+            page_load_time = now - nowStart;
+            page_load_time= Number(page_load_time/1000).toFixed(1);
+            splashPortalVisitorOnload('','m25htqpolhdg8bm04vscnp8h82',page_load_time,'','cloud4widefault','webapps','remoteAppContainer');
+        });
+    }
+</script>

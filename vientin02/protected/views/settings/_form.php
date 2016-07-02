@@ -3,7 +3,7 @@
 /* @var $model Settings */
 /* @var $form CActiveForm */
 ?>
-<script src="../lib/tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="<?php echo Yii::app()->baseUrl;?>/lib/tinymce/js/tinymce/tinymce.min.js"></script>
 <script>
 	tinymce.init({
 		selector: 'textarea',
@@ -46,6 +46,15 @@
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-success btn-lg btn-block')); ?>
 	</div>
 	<div class="row">
+		<h3>Keywords</h3>
+		<ul>
+			<li><kbd>{{customer.first_name}}</kbd></li>
+			<li><kbd>{{customer.last_name}}</kbd></li>
+			<li><kbd>{{customer.username}}</kbd></li>
+			<li><kbd>{{tenant.name}}</kbd></li>
+		</ul>
+	</div>
+	<div class="row">
 		<?php echo $form->labelEx($model,'setting_key'); ?>
 		<?php echo $form->textField($model,'setting_key',array('size'=>60,'maxlength'=>256, 'readonly' => true)); ?>
 		<?php echo $form->error($model,'setting_key'); ?>
@@ -64,3 +73,52 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<div class="panel panel-primary">
+	<div class="panel-heading">Demo POST Data</div>
+	<div class="panel-body">
+		<pre>{
+	"v2": {
+		"tenant": {
+			"tenant_id": "63",
+			"name": "Tenant Name",
+			"read_only": false
+		},
+		"wifiarea": {
+			"wifiarea_id": "80808080503c12ff015041c618d80083",
+			"name": "Venue Name"
+		},
+		"customer": {
+			"lang": "eng",
+			"is_logged": true,
+			"id": "rlo7ggvYDzK2Y",
+			"first_name": "None",
+			"last_name": "None",
+			"username": "12F753BB",
+			"gender": "M",
+			"birth_date": "1967-11-22 10:20:30",
+			"phone": "+44123456678",
+			"phone_prefix": "+44",
+			"email": "email@test.it",
+			"mac_address": ["e49a79a56d82"]
+		},
+		"hotspot": {
+			"id": "2063",
+			"identifier": "00:18:0a:82:0c:cc",
+			"name": "Hotspot Name",
+			"latitude": "43.722839355469",
+			"longitude": "10.401688575745",
+			"mac_address": "00180g820ccc",
+			"state": "State",
+			"zip": "12345",
+			"city": "City",
+			"tag": "hotspot"
+		},
+		"webapp": {
+			"id": "77",
+			"name": "Hello World"
+		}
+	}
+}		</pre>
+	</div>
+</div>
+

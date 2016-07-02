@@ -50,48 +50,136 @@ class PromoteController extends BaseController
 			// log this post
 			$request = new Requests();
 			$request->content = json_encode($_POST);
-			$request->posted_date = date('Y/m/d H:m:i');
+			$request->posted_date = date('Y/m/d H:i:s');
 			$request->save();
 			// logged
 			$model = new PromoteCodes();
 
-			/*
-         {
-            "User":{"name":"John", "surname":"Doe", "gender":"Male", "username":"john_user", "email":"example@example.com"},
-            "WifiArea":{"id":"123"},
-            "Parameters"={"key": "value"},
-            "Tenant"={}
-        }
-            */
+			$v2 = json_decode($_POST['v2']);
 
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 			$errors = array();
-			//$promoteCodeParams = $_POST['PromoteCodes'];
-			$promoteCodeParams = $_POST;
-//        var_dump($promoteCodeParams);
-//        die();
-			if (!empty($promoteCodeParams['User'])) {
-				$model->setAttribute("user_info", json_encode($promoteCodeParams['User']));
-			} /*else {
-            $errors[] = "Thiếu tham số 'User'";
-        }*/
-			if (isset($promoteCodeParams['Tenant'])) {
-				$model->setAttribute("tenant_info", json_encode($promoteCodeParams['Tenant']));
+			//// Save to others table
+			////// tenant
+			$tenant = null;
+			if(isset($v2->tenant->tenant_id)) {
+				$tenant = Tenant::model()->findByAttributes(array('tenant_id' => $v2->tenant->tenant_id));
 			}
-			if (isset($promoteCodeParams['WifiArea'])) {
-				$model->setAttribute("wifi_area", json_encode($promoteCodeParams['WifiArea']));
+			if(!isset($tenant)) {
+				// New tenant
+				$tenant = new Tenant();
+				if(isset($v2->tenant->tenant_id))
+					$tenant->tenant_id = $v2->tenant->tenant_id;
+				if($v2->tenant->name)
+					$tenant->name = $v2->tenant->name;
+				if(isset($v2->tenant->read_only))
+					$tenant->read_only = $v2->tenant->read_only ? 1 : 0;
+
+				if(!$tenant->save()) {
+				}
 			}
-			if (isset($promoteCodeParams['Parameters'])) {
-				$model->setAttribute("parameters", json_encode($promoteCodeParams['Parameters']));
+			////// wifiarea
+			$wifiarea = null;
+			if(isset($v2->wifiarea->wifiarea_id)) {
+				$wifiarea = Wifiarea::model()->findByAttributes(array('wifiarea_id' => $v2->wifiarea->wifiarea_id));
 			}
-			if (isset($promoteCodeParams['Discount'])) {
-				$model->setAttribute("discount", json_encode($promoteCodeParams['Discount']));
-			} else {
-				$model->setAttribute("discount", "20%");
+			if(!isset($wifiarea)) {
+				// New tenant
+				$wifiarea = new Wifiarea();
+				if(isset($v2->wifiarea->wifiarea_id))
+					$wifiarea->wifiarea_id = $v2->wifiarea->wifiarea_id;
+				if(isset($v2->wifiarea->name))
+					$wifiarea->name = $v2->wifiarea->name;
+				if(!$wifiarea->save()) {
+				}
+			}
+			////// customer
+			$customer = null;
+			if(isset($v2->customer->id)) {
+				$customer = Customer::model()->findByAttributes(array('customer_id' => $v2->customer->id));
+			}
+			if(!isset($customer)) {
+				// New tenant
+				$customer = new Customer();
+				if(isset($v2->customer->id))
+					$customer->customer_id = $v2->customer->id;
+				if(isset($v2->customer->is_logged))
+					$customer->is_logged = $v2->customer->is_logged ? 1 : 0;
+				if(isset($v2->customer->lang))
+					$customer->lang = $v2->customer->lang;
+				if(isset($v2->customer->first_name))
+					$customer->first_name = $v2->customer->first_name;
+				if(isset($v2->customer->last_name))
+					$customer->last_name = $v2->customer->last_name;
+				if(isset($v2->customer->username))
+					$customer->username = $v2->customer->username;
+				if(isset($v2->customer->gender))
+					$customer->gender = $v2->customer->gender;
+				if(isset($v2->customer->birth_date))
+					$customer->birth_date = $v2->customer->birth_date;
+
+				if(!$customer->save()) {
+				}
+			}
+			////// hotspot
+			$hotspot = null;
+			if(isset($v2->hotspot->id)) {
+				$hotspot = Hotspot::model()->findByAttributes(array('hotspot_id' => $v2->hotspot->id));
+			}
+			if(!isset($hotspot)) {
+				// New tenant
+				$hotspot = new Hotspot();
+				if(isset($v2->hotspot->hotspot_id)) {
+					$hotspot->hotspot_id = $v2->hotspot->hotspot_id;
+				}
+				if(isset($v2->hotspot->identifier)) {
+					$hotspot->identifier = $v2->hotspot->identifier;
+				}
+				if(isset($v2->hotspot->name)) {
+					$hotspot->name = $v2->hotspot->name;
+				}
+				if(isset($v2->hotspot->latitude)) {
+					$hotspot->latitude = $v2->hotspot->latitude;
+				}
+				if(isset($v2->hotspot->longitude)) {
+					$hotspot->longitude = $v2->hotspot->longitude;
+				}
+				if(isset($v2->hotspot->mac_address)) {
+					$hotspot->mac_address = $v2->hotspot->mac_address;
+				}
+				if(isset($v2->hotspot->state)) {
+					$hotspot->state = $v2->hotspot->state;
+				}
+				if(isset($v2->hotspot->zip)) {
+					$hotspot->zip = $v2->hotspot->zip;
+				}
+				if(isset($v2->hotspot->city)) {
+					$hotspot->city = $v2->hotspot->city;
+				}
+				if(isset($v2->hotspot->tag)) {
+					$hotspot->tag = $v2->hotspot->tag;
+				}
+
+				if(!$hotspot->save()) {
+				}
+
 			}
 
+			////// webapp
+			$webapp = null;
+			if(isset($v2->webapp)) {
+				$webapp = Webapp::model()->findByAttributes(array('webapp_id' => $v2->webapp->id));
+			}
+			if(!isset($webapp)) {
+				$webapp = new Webapp();
+				if(isset($v2->webapp->id))
+					$webapp->webapp_id = $v2->webapp->id;
+				if(isset($v2->webapp->name))
+					$webapp->name = $v2->webapp->name;
 
+				$webapp->save();
+			}
 
 			if (count($errors) == 0) {
 				$duplicate = true;
@@ -108,7 +196,33 @@ class PromoteController extends BaseController
 					}
 				}
 				$model->setAttribute("code", $code);
+				if(isset($_POST['cloud4wi'])) {
+					$model->cloud4wi = $_POST['cloud4wi'];
+				}
+				if(isset($_POST['data'])) {
+					$model->data = $_POST['data'];
+				}
+				if(isset($_POST['v2'])) {
+					$model->v2 = $_POST['v2'];
+				}
+				if(isset($tenant)) {
+					$model->tenant_id = $tenant->id;
+				}
+				if(isset($wifiarea)) {
+					$model->tenant_id = $wifiarea->id;
+				}
+				if(isset($customer)) {
+					$model->customer_id = $customer->id;
+				}
+				if(isset($hotspot)) {
+					$model->hotspot_id = $hotspot->id;
+				}
+				if(isset($webapp)) {
+					$model->webapp_id = $webapp->id;
+				}
 				$model->setAttribute("created_at", date("Y/m/d H:i:s"));
+				$model->discount = 0;
+
 				if(!$model->save()) {
 					$errors[] = "Lưu dữ Promote code bị lỗi";
 				}
@@ -136,6 +250,9 @@ class PromoteController extends BaseController
 					$bottom_content = $settings->setting_value;
 				}
 			}
+			// Replace placeholders
+			$top_content = $model->replacePlaceHolder($top_content);
+			$bottom_content = $model->replacePlaceHolder($bottom_content);
 
 			$this->layout = 'promote';
 			$this->render('create', array(
@@ -251,6 +368,6 @@ class PromoteController extends BaseController
 				$promote->save();
 			}
 		}
-		$this->redirect('/promote/view?code='.$code);
+		$this->redirect($this->createUrl('promote/view', array('code' => $code)));
 	}
 }

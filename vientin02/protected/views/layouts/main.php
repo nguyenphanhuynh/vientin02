@@ -35,6 +35,7 @@
 		$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Check Coupon', 'url'=>array('/promote/view'), 'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('Promote.View')),
+				array('label'=>'Requests', 'url'=>array('/requests/admin'), 'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('Request.Admin')),
 				array('label'=>Yii::t('app','Settings'), 'url'=>array('/settings/admin'), 'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('Settings.Admin')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

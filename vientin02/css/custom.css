@@ -17,3 +17,7 @@ a {
 .padding-right {
     padding-right: 1em;
 }
+
+#content {
+    padding: 5px 0px;
+}

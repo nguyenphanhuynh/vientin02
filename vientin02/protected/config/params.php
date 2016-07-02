@@ -17,5 +17,5 @@ return array(
 	// the copyright information displayed in the footer section
 	'copyrightInfo'=>'Copyright &copy; 2016 by VienTin.',
 //	'absoluteServerURL'=>'http://123.30.109.195:81/app',
-	'absoluteServerURL'=>'http://vientin02.local',
+	'absoluteServerURL'=>'http://123.30.109.195:81/app',
 );
